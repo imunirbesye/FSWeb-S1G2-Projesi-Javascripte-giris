@@ -52,9 +52,10 @@ Aşağıdakileri yaparak carpma isimli fonksiyonu tamamla:
    3. console.log(carpma(7,4)) ile yazdığın fonsiyonu test edin. Console'da sonucu 28 olarak görmelisin.
 */
 
-function carpma(/*buraya kodunu yazabilirsin*/) {
-  /*buraya kodunu yazabilirsin*/
+function carpma(a, b) {
+  return a*b;
 }
+console.log(carpma(7,4));
 
 /* Görev 2 : Köpeğin Yaşı */
 
@@ -65,9 +66,10 @@ Aşağıdakileri yap:
  3. Hesaplanan köpeğin yaşını dönün.
  */
 
-function kopeginYasi(/*buraya kodunu yazabilirsin*/) {
-  /*buraya kodunu yazabilirsin*/
+function kopeginYasi(a) {
+  return a*7;
 }
+console.log(kopeginYasi(8));
 
 /* Görev 3 */
 /*
@@ -84,8 +86,15 @@ OYUNUN KURALLARI: Makas Kağıdı yener| Kağıt Taşı yener | Taş Makas'ı ye
 */
 
 function oyun(oyuncu, bilgisayar) {
-  /*buraya kodunu yazabilirsin*/
+  if(oyuncu == "Makas" && bilgisayar == "Kağıt" || oyuncu == "Kağıt" && bilgisayar == "Taş" || oyuncu == "Taş" && bilgisayar == "Makas")
+    return "Kazandın!";
+  else if(bilgisayar == "Makas" && oyuncu == "Kağıt" || bilgisayar == "Kağıt" && oyuncu == "Taş" || bilgisayar == "Taş" && oyuncu == "Makas")
+    return "Kaybettin!";
+  else 
+    return "Beraberlik";
 }
+
+console.log(oyun("Kağıt", "Makas"));
 
 // Şimdi Taş, Kağıt, Makas oyununu bilgisayara karşı oynayalım!
 /*
@@ -103,6 +112,23 @@ function oyun(oyuncu, bilgisayar) {
 Örn: console.log(oyun("Makas",bilgisayarinSecimi()))
 */
 
+function bilgisayarinSecimi() {
+  let secim = Math.random();
+  if(secim >= 0 && secim <= 0.33){
+    console.log("Kağıt");
+    return "Kağıt";
+  }
+  else if(secim > 0.33 && secim <= 0.66){
+    console.log("Makas");
+    return "Makas";
+  }
+  else if(secim > 0.66){
+    console.log("Taş");
+    return "Taş";
+  }
+} 
+console.log(oyun("Taş", bilgisayarinSecimi()));
+
 /* Görev 4 : Metrik Dönüştürücü */
 
 //Görev 4a - Kilometreden Mil
@@ -113,10 +139,11 @@ Aşağdaki milDonusturucu fonksiyonunu aşağıdakileri kullanarak tamamla:
 3. Mil değerini geri dönün
 */
 
-function milDonusturucu(/*buraya kodunu yazabilirsin*/) {
-  /*buraya kodunu yazabilirsin*/
+function milDonusturucu(kilometre) {
+  let mil = kilometre * 0.621371;
+  return mil;
 }
-
+console.log(milDonusturucu(100));
 //Görev 4b - Santimetreden Feet
 /*
 Aşağıdakileri feetDonusturucu fonsiyonunu kullanarak yap:
@@ -127,10 +154,10 @@ Aşağıdakileri feetDonusturucu fonsiyonunu kullanarak yap:
 Google'da arama ipucu: "feet cm dönüştürme"
 */
 
-function feetDonusturucu(/*buraya kodunu yazabilirsin*/) {
-  /*buraya kodunu yazabilirsin*/
+function feetDonusturucu(cm) {
+  return cm / 30.48;
 }
-
+console.log(feetDonusturucu(10000000));
 /* Görev 5 : 5 küçük maymun yatakta zıplamış şarkısını çocuklar için hazırladığımı varsayalım. https://www.youtube.com/watch?v=e4EJ34xnlxk */
 
 /*
@@ -144,8 +171,13 @@ Aşağıdakileri cocukSarkisi fonksiyonunda yap:
 4. Bu döngüde, her seferinde cocukSarkisi fonsiyonu çalışsın ve console.log'a dönen metni yazdırsın.
 */
 
-function cocukSarkisi(/*buraya kodunu yazabilirsin*/) {
-  /*buraya kodunu yazabilirsin*/
+function cocukSarkisi(a) {
+  let maymun = a;
+  return `${maymun} küçük maymun yatakta zıplamış, biri düşüp başını çarpmış, Anne doktoru aramış, Doktor çok kızmış: Bir daha yatakta zıplamak yok!`;
+}
+
+for(let a = 5; a >= 1; a--){
+  cocukSarkisi(a);
 }
 
 /* Görev 6 : Not Hesaplayıcı */
@@ -163,8 +195,17 @@ Aşağdakileri notHesapla fonksiyonunda yap.
  dönün
 */
 
-function notHesapla(/*buraya kodunu yazabilirsin*/) {
-  /*buraya kodunu yazabilirsin*/
+function notHesapla(sinav) {
+  if(sinav <= 100 && sinav >= 90)
+    return "A aldın";
+  else if(sinav <= 89 && sinav >= 80)
+    return "B aldın";
+  else if(sinav <= 79 && sinav >= 70)
+    return "C aldın";
+  else if(sinav <= 69 && sinav >= 60)
+    return "D aldın";
+  else 
+    return "F aldın";
 }
 
 /* Bonus Çalışma: Sesli harf sayacı - Kaç tane sesli harf var? */
@@ -178,9 +219,17 @@ Aşağıdakileri sesliHarfSayaci fonskiyonunda yap.
 İPUCU - .includes() methoduna bakabilirsin. (https://www.w3schools.com/jsref/jsref_includes.asp)
 */
 
-function sesliHarfSayaci(/*buraya kodunu yazabilirsin*/) {
-  /*buraya kodunu yazabilirsin*/
+function sesliHarfSayaci(metin) {
+  let sayac = 0;
+  for(let a = 0; a < metin.length; a++) {
+    if(metin[a] == 'a' || metin[a] == 'e' || metin[a] == 'ı' || metin[a] == 'i' || metin[a] == 'o' || metin[a] == 'ö' || metin[a] == 'u' || metin[a] == 'ü' || metin[a] == 'A' || metin[a] == 'E' || metin[a] == 'I' || metin[a] == 'İ' || metin[a] == 'O' || metin[a] == 'Ö' || metin[a] == 'U' || metin[a] == 'Ü')
+      sayac++;
+  }
+
+  console.log(sayac);
 }
+
+sesliHarfSayaci("Münir BESYE 1998 yılında doğdu.");
 
 /* Lütfen bu satırın alt tarafını değiştirmeyin */
 function sa() {
